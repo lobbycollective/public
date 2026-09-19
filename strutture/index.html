@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Download Documento</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    .btn { display: inline-block; padding: 12px 24px; margin: 10px; background: #0969da; color: white; text-decoration: none; border-radius: 6px; }
-  </style>
+  <script>
+    const userLang = navigator.language || navigator.userLanguage; 
+    
+    // Se la lingua del browser inizia con 'it', scarica la versione italiana
+    if (userLang.startsWith('it')) {
+      window.location.href = "guida-it.pdf";
+    } else {
+      // Per tutte le altre lingue, imposta l'inglese come fallback
+      window.location.href = "guida-en.pdf";
+    }
+  </script>
 </head>
 <body>
-  <h2>Scarica il file / Download the file</h2>
-  <a class="btn" href="guida-it.pdf" download>Scarica in Italiano (PDF)</a>
-  <a class="btn" href="guida-en.pdf" download>Download in English (PDF)</a>
+  <p>Reindirizzamento al download in corso...</p>
 </body>
 </html>
