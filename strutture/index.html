@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
+  <meta charset="UTF-8">
+  <title>Cammino del Salento - Download</title>
   <script>
-    const userLang = navigator.language || navigator.userLanguage; 
-    
-    // Se la lingua del browser inizia con 'it', scarica la versione italiana
-    if (userLang.startsWith('it')) {
-      window.location.href = "guida-it.pdf";
-    } else {
-      // Per tutte le altre lingue, imposta l'inglese come fallback
-      window.location.href = "guida-en.pdf";
-    }
+    // Rileva la lingua del browser (es. "it-IT", "fr-FR", "es", "de-DE", "en-US")
+    const userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+
+    // Mappa tra codice lingua e il nome esatto del file PDF
+    const pdfFiles = {
+      'it': 'Cammino del Salento it-IT.pdf',
+      'en': 'Cammino del Salento en-GB.pdf',
+      'fr': 'Cammino del Salento fr-FR.pdf',
+      'es': 'Cammino del Salento es-ES.pdf',
+      'de': 'Cammino del Salento de-DE.pdf'
+    };
+
+    // Estrae i primi due caratteri del codice lingua (es. "it" da "it-IT")
+    const langCode = userLang.slice(0, 2);
+
+    // Seleziona il file corrispondente o usa l'inglese come fallback
+    const targetFile = pdfFiles[langCode] || pdfFiles['en'];
+
+    // Reindirizza al file PDF (encodeURIComponent gestisce gli spazi nel nome del file)
+    window.location.href = encodeURIComponent(targetFile);
   </script>
 </head>
 <body>
   <p>Reindirizzamento al download in corso...</p>
+  <!-- Fallback visibile nel caso in cui il JavaScript sia disabilitato nel browser -->
+  <noscript>
+    <p>Se il download non parte automaticamente, seleziona la tua lingua:</p>
+    <ul>
+      <li><a href="Cammino%20del%20Salento%20it-IT.pdf">Italiano</a></li>
+      <li><a href="Cammino%20del%20Salento%20en-GB.pdf">English</a></li>
+      <li><a href="Cammino%20del%20Salento%20fr-FR.pdf">Français</a></li>
+      <li><a href="Cammino%20del%20Salento%20es-ES.pdf">Español</a></li>
+      <li><a href="Cammino%20del%20Salento%20de-DE.pdf">Deutsch</a></li>
+    </ul>
+  </noscript>
 </body>
 </html>
