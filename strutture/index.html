@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Cammino del Salento - Download</title>
   <script>
-    // Rileva la lingua del browser (es. "it-IT", "fr-FR", "es", "de-DE", "en-US")
+    // Rileva la lingua del browser (es. "it-IT", "fr-FR", "cs-CZ", "en-US")
     const userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
 
     // Mappa tra codice lingua e il nome esatto del file PDF
@@ -13,13 +13,16 @@
       'en': 'Cammino del Salento en-GB.pdf',
       'fr': 'Cammino del Salento fr-FR.pdf',
       'es': 'Cammino del Salento es-ES.pdf',
-      'de': 'Cammino del Salento de-DE.pdf'
+      'de': 'Cammino del Salento de-DE.pdf',
+      'cs': 'Cammino del Salento cs-CZ.pdf',
+      'pl': 'Cammino del Salento pl-PL.pdf',
+      'sk': 'Cammino del Salento sk-SK.pdf'
     };
 
-    // Estrae i primi due caratteri del codice lingua (es. "it" da "it-IT")
+    // Estrae i primi due caratteri del codice lingua (es. "cs" da "cs-CZ")
     const langCode = userLang.slice(0, 2);
 
-    // Seleziona il file corrispondente o usa l'inglese come fallback
+    // Seleziona il file corrispondente o usa l'inglese come fallback per tutte le altre lingue
     const targetFile = pdfFiles[langCode] || pdfFiles['en'];
 
     // Reindirizza al file PDF (encodeURIComponent gestisce gli spazi nel nome del file)
@@ -30,13 +33,16 @@
   <p>Reindirizzamento al download in corso...</p>
   <!-- Fallback visibile nel caso in cui il JavaScript sia disabilitato nel browser -->
   <noscript>
-    <p>Se il download non parte automaticamente, seleziona la tua lingua:</p>
+    <p>Se il download non parte automaticamente, seleziona la tua lingua / Select your language:</p>
     <ul>
       <li><a href="Cammino%20del%20Salento%20it-IT.pdf">Italiano</a></li>
       <li><a href="Cammino%20del%20Salento%20en-GB.pdf">English</a></li>
       <li><a href="Cammino%20del%20Salento%20fr-FR.pdf">Français</a></li>
       <li><a href="Cammino%20del%20Salento%20es-ES.pdf">Español</a></li>
       <li><a href="Cammino%20del%20Salento%20de-DE.pdf">Deutsch</a></li>
+      <li><a href="Cammino%20del%20Salento%20cs-CZ.pdf">Čeština</a></li>
+      <li><a href="Cammino%20del%20Salento%20pl-PL.pdf">Polski</a></li>
+      <li><a href="Cammino%20del%20Salento%20sk-SK.pdf">Slovenčina</a></li>
     </ul>
   </noscript>
 </body>
